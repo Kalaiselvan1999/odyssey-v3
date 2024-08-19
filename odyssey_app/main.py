@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request, Depends
-from dependencies import authenticate
+from dependencies import authentication
 
 app = FastAPI()
 
@@ -16,7 +16,7 @@ async def pong():
 
 
 @app.get('/odyssey/{odyssey_id}')
-async def get_odyssey(odyssey_id: int, token: str = Depends(authenticate)):
+async def get_odyssey(odyssey_id: int, token: authentication):
     try:
         return {
             "name": "Odyssey",
